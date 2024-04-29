@@ -6,8 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+<div>
+  <p id="name"></p>
+  <input type = "text" id="userinput"> <button>Submit</button>
+</div>
     <script>
-        document.cookie = "username=John Doe; expires=Thu, 18 Dec 2025 12:00:00 UTC";
+        document.cookie = "username=Lum; expires=Thu, 18 Dec 2025 12:00:00 UTC";
         function setCookie(cname, cvalue, exdays) {
         const d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -30,16 +34,22 @@ function getCookie(cname) {
   return "";
 }
 function checkCookie() {
-  let username = getCookie("username");
+  let username = getCookie("username")
   if (username != "") {
-   alert("Welcome again " + username);
+    document.getElementById("name").innerText = "Welcome again " + username;
   } else {
     username = prompt("Please enter your name:", "");
+    let username = document.getElementById("userinput").value;
     if (username != "" && username != null) {
       setCookie("username", username, 365);
+      document.getElementById("name").innerText = "Welcome" + username;
+      
     }
   }
 }
+
+
+checkCookie()
     </script>
 </body>
 </html>
